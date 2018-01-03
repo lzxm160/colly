@@ -32,7 +32,7 @@ func main() {
 	})
 
 	// Start scraping on https://en.wikipedia.org
-	c.Visit("https://en.wikipedia.org/")
+	c.Visit("https://www.etherchain.org/")
 	// Wait until threads are finished
 	c.Wait()
 }

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/gocolly/colly"
+	"strings"
 )
 
 func main() {
@@ -38,23 +39,27 @@ func main() {
 		// divClass := "card-body card-block"
 		nestedTestData := elem.ChildText("div")
 		fmt.Println("xx:", nestedTestData)
-		doc, _ := goquery.NewDocumentFromReader(bytes.NewBuffer([]byte(nestedTestData)))
-		e := &colly.HTMLElement{
-			DOM: doc.First(),
+		title := strings.Split(nestedTestData, " ")
+		for i, c := range title {
+			fmt.Printf("%d:%s\n", i, c)
 		}
-		type nested struct {
-			String string  `selector:"div > span"`
-			Struct *nested `selector:"div > div"`
-		}
-		s := nested{}
-		if err := e.Unmarshal(&s); err != nil {
-			fmt.Println("Cannot unmarshal struct: " + err.Error())
-		}
-		// if s.String != "a" {
-		// 	t.Errorf(`Invalid data for String: %q, expected "a"`, s.String)
+		// doc, _ := goquery.NewDocumentFromReader(bytes.NewBuffer([]byte(nestedTestData)))
+		// e := &colly.HTMLElement{
+		// 	DOM: doc.First(),
 		// }
-		fmt.Println(s.String)
-		fmt.Println(s.Struct.Struct.String)
+		// type nested struct {
+		// 	String string  `selector:"div > span"`
+		// 	Struct *nested `selector:"div > div"`
+		// }
+		// s := nested{}
+		// if err := e.Unmarshal(&s); err != nil {
+		// 	fmt.Println("Cannot unmarshal struct: " + err.Error())
+		// }
+		// // if s.String != "a" {
+		// // 	t.Errorf(`Invalid data for String: %q, expected "a"`, s.String)
+		// // }
+		// fmt.Println(s.String)
+		// fmt.Println(s.Struct.Struct.String)
 	})
 
 	// Start scraping on https://en.wikipedia.org

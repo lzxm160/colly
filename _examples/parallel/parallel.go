@@ -35,8 +35,25 @@ func main() {
 		// div.creator-names > span
 		// temp := e.ChildText("span.aria-count-up")
 		// divClass := "card-body card-block"
-		temp := e.ChildText("span")
-		fmt.Println("xx:", temp)
+		// nestedTestData := e.ChildText("div")
+		// // fmt.Println("xx:", temp)
+		// doc, _ := goquery.NewDocumentFromReader(bytes.NewBuffer(nestedTestData))
+		// e := &HTMLElement{
+		// 	DOM: doc.First(),
+		// }
+		type nested struct {
+			String string  `selector:"div > span"`
+			Struct *nested `selector:"div > div"`
+		}
+		s := nested{}
+		if err := e.Unmarshal(&s); err != nil {
+			t.Error("Cannot unmarshal struct: " + err.Error())
+		}
+		// if s.String != "a" {
+		// 	t.Errorf(`Invalid data for String: %q, expected "a"`, s.String)
+		// }
+		fmt.Println(s.String)
+		fmt.Println(s.Struct.Struct.String)
 	})
 
 	// Start scraping on https://en.wikipedia.org

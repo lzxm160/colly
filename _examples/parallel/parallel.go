@@ -32,7 +32,10 @@ func main() {
 	// 	// go e.Request.Visit(link)
 	// })
 	c.OnHTML(".card-group", func(e *colly.HTMLElement) {
-		temp := e.ChildText("span.aria-count-up")
+		// div.creator-names > span
+		// temp := e.ChildText("span.aria-count-up")
+		// divClass := "card-body card-block"
+		temp := e.ChildText("span")
 		fmt.Println("xx:", temp)
 	})
 

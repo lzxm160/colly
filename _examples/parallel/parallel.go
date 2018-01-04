@@ -31,10 +31,30 @@ func main() {
 	// 	// Visit link found on page on a new thread
 	// 	// go e.Request.Visit(link)
 	// })
-	c.OnHTML("h4", func(e *colly.HTMLElement) {
-		link := e.Attr("span")
-		// Print link
-		fmt.Println(link)
+	c.OnHTML("h4[class=card-title]", func(e *colly.HTMLElement) {
+		// if e.DOM.Find("section.course-info").Length() == 0 {
+		// 	return
+		// }
+		// title := strings.Split(e.ChildText(".course-title"), "\n")[0]
+		// course_id := e.ChildAttr("input[name=course_id]", "value")
+		// start_date, _ := time.Parse(DATE_FORMAT, e.ChildText("span.start-date"))
+		// end_date, _ := time.Parse(DATE_FORMAT, e.ChildText("span.final-date"))
+		temp := e.ChildText("span.aria-count-up")
+		fmt.Println("xx:", temp)
+		// var run string
+		// if len(strings.Split(course_id, "_")) > 1 {
+		// 	run = strings.Split(course_id, "_")[1]
+		// }
+		// course := Course{
+		// 	CourseID:  course_id,
+		// 	Run:       run,
+		// 	Name:      title,
+		// 	Number:    e.ChildText("span.course-number"),
+		// 	StartDate: &start_date,
+		// 	EndDate:   &end_date,
+		// 	URL:       fmt.Sprintf("/courses/%s/about", course_id),
+		// }
+		// courses = append(courses, course)
 	})
 
 	// Start scraping on https://en.wikipedia.org

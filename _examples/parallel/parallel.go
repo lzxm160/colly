@@ -24,11 +24,12 @@ func main() {
 
 	// On every a element which has href attribute call callback
 	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
-		link := e.Attr("href")
+		// link := e.Attr("href")
+		link := e.Attr("h4")
 		// Print link
 		fmt.Println(link)
 		// Visit link found on page on a new thread
-		go e.Request.Visit(link)
+		// go e.Request.Visit(link)
 	})
 
 	// Start scraping on https://en.wikipedia.org

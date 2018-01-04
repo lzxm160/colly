@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/PuerkitoBio/goquery"
 	"github.com/gocolly/colly"
 )
 
@@ -38,7 +39,7 @@ func main() {
 		nestedTestData := elem.ChildText("div")
 		// fmt.Println("xx:", temp)
 		doc, _ := goquery.NewDocumentFromReader(bytes.NewBuffer(nestedTestData))
-		e := &HTMLElement{
+		e := &colly.HTMLElement{
 			DOM: doc.First(),
 		}
 		type nested struct {

@@ -37,7 +37,7 @@ func main() {
 		// div.creator-names > span
 		// temp := e.ChildText("span.aria-count-up")
 		// divClass := "card-body card-block"
-		fmt.Println(e.Text)
+		fmt.Println(elem.Text)
 		nestedTestData := elem.ChildText("div")
 		// fmt.Println("xx:", nestedTestData)
 		title := strings.Split(nestedTestData, " ")

@@ -23,13 +23,18 @@ func main() {
 	c.MaxDepth = 2
 
 	// On every a element which has href attribute call callback
-	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
-		// link := e.Attr("href")
-		link := e.Attr("h4[span]")
+	// c.OnHTML("a[href]", func(e *colly.HTMLElement) {
+	// 	// link := e.Attr("href")
+	// 	link := e.Attr("h4[span]")
+	// 	// Print link
+	// 	fmt.Println(link)
+	// 	// Visit link found on page on a new thread
+	// 	// go e.Request.Visit(link)
+	// })
+	c.OnHTML("h4", func(e *colly.HTMLElement) {
+		link := e.Attr("span")
 		// Print link
 		fmt.Println(link)
-		// Visit link found on page on a new thread
-		// go e.Request.Visit(link)
 	})
 
 	// Start scraping on https://en.wikipedia.org

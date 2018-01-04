@@ -32,7 +32,7 @@ func main() {
 	// 	// go e.Request.Visit(link)
 	// })
 	c.OnHTML(".card-group", func(e *colly.HTMLElement) {
-		temp := e.ChildText("span")
+		temp := e.ChildText("span.aria-count-up")
 		fmt.Println("xx:", temp)
 	})
 

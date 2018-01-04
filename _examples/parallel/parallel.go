@@ -47,7 +47,7 @@ func main() {
 		}
 		s := nested{}
 		if err := e.Unmarshal(&s); err != nil {
-			t.Error("Cannot unmarshal struct: " + err.Error())
+			fmt.Println("Cannot unmarshal struct: " + err.Error())
 		}
 		// if s.String != "a" {
 		// 	t.Errorf(`Invalid data for String: %q, expected "a"`, s.String)

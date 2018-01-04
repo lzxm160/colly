@@ -31,7 +31,7 @@ func main() {
 	// 	// Visit link found on page on a new thread
 	// 	// go e.Request.Visit(link)
 	// })
-	c.OnHTML("h4[class=card-title]", func(e *colly.HTMLElement) {
+	c.OnHTML("div[class=card-body card-block]", func(e *colly.HTMLElement) {
 		// if e.DOM.Find("section.course-info").Length() == 0 {
 		// 	return
 		// }

@@ -37,7 +37,7 @@ func main() {
 		// temp := e.ChildText("span.aria-count-up")
 		// divClass := "card-body card-block"
 		nestedTestData := elem.ChildText("div")
-		// fmt.Println("xx:", temp)
+		fmt.Println("xx:", nestedTestData)
 		doc, _ := goquery.NewDocumentFromReader(bytes.NewBuffer([]byte(nestedTestData)))
 		e := &colly.HTMLElement{
 			DOM: doc.First(),

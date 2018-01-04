@@ -38,7 +38,7 @@ func main() {
 		// divClass := "card-body card-block"
 		nestedTestData := elem.ChildText("div")
 		// fmt.Println("xx:", temp)
-		doc, _ := goquery.NewDocumentFromReader(bytes.NewBuffer(nestedTestData))
+		doc, _ := goquery.NewDocumentFromReader(bytes.NewBuffer([]byte(nestedTestData)))
 		e := &colly.HTMLElement{
 			DOM: doc.First(),
 		}

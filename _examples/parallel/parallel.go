@@ -31,16 +31,16 @@ func main() {
 	// 	// Visit link found on page on a new thread
 	// 	// go e.Request.Visit(link)
 	// })
-	c.OnHTML(".card-group", func(e *colly.HTMLElement) {
+	c.OnHTML(".card-group", func(elem *colly.HTMLElement) {
 		// div.creator-names > span
 		// temp := e.ChildText("span.aria-count-up")
 		// divClass := "card-body card-block"
-		// nestedTestData := e.ChildText("div")
-		// // fmt.Println("xx:", temp)
-		// doc, _ := goquery.NewDocumentFromReader(bytes.NewBuffer(nestedTestData))
-		// e := &HTMLElement{
-		// 	DOM: doc.First(),
-		// }
+		nestedTestData := elem.ChildText("div")
+		// fmt.Println("xx:", temp)
+		doc, _ := goquery.NewDocumentFromReader(bytes.NewBuffer(nestedTestData))
+		e := &HTMLElement{
+			DOM: doc.First(),
+		}
 		type nested struct {
 			String string  `selector:"div > span"`
 			Struct *nested `selector:"div > div"`

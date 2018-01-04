@@ -1,9 +1,9 @@
 package main
 
 import (
-	"bytes"
+	// "bytes"
 	"fmt"
-	"github.com/PuerkitoBio/goquery"
+	// "github.com/PuerkitoBio/goquery"
 	"github.com/gocolly/colly"
 	"strings"
 )
